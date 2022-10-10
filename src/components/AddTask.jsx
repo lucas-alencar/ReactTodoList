@@ -5,13 +5,24 @@ export default class AddTask extends Component {
     constructor() {
         super();
 
-        this.state = {};
+        this.state = {
+            title: '',
+        };
+        
+        this.handleInput= this.handleInput.bind(this);
+    }
+
+    handleInput( event ) {
+        this.setState({
+            title: event.target.value,
+        });
     }
 
     render() {
+        const { title } = this.state;
         return (
             <form>
-                <input type="text" onChange={(event) => console.log(event.target.value)} />
+                <input type="text" value={title} onChange={this.handleInput} />
                 <button type="button">Adicionar tarefa</button>
             </form>
             
