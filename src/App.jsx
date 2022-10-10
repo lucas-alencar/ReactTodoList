@@ -5,16 +5,30 @@ class App extends Component {
   constructor() {
     super();
 
-    this.state = {};
+    this.state = {
+      tasks: [],
+    };
+
+    this.createTask = this.createTask.bind(this);
   }
 
-  CreateTask() {
-
+  createTask(event, newTask) {
+    event.preventDefault();
+    const { tasks } = this.state;
+    this.setState({
+      tasks: [...tasks, newTask],
+    });
   }
 
   render() {
+    const { tasks } = this.state;
     return (
-      <AddTask onCreate={this.CreateTask} />
+      <>
+        <AddTask onCreate={this.createTask} />
+        { tasks.map((task) => (
+          <h1>{task.title}</h1>
+        )) }
+      </>
     );
   }
 }

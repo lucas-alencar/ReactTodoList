@@ -22,7 +22,7 @@ export default class AddTask extends Component {
         const { title } = this.state;
         const { onCreate } = this.props;
         return (
-            <form onSubmit={onCreate}>
+            <form onSubmit={(event) => OnCreate(event, this.state)} >
                 <input type="text" value={title} onChange={this.handleInput} />
                 <button type="button">Adicionar tarefa</button>
             </form>
