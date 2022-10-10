@@ -8,9 +8,13 @@ class App extends Component {
     this.state = {};
   }
 
+  CreateTask() {
+
+  }
+
   render() {
     return (
-      <AddTask />
+      <AddTask onCreate={this.CreateTask} />
     );
   }
 }

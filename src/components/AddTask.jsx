@@ -1,5 +1,5 @@
 import React, { Component } from 'react'; 
-
+import PropTypes from 'prop-types';
 
 export default class AddTask extends Component {
     constructor() {
@@ -20,8 +20,9 @@ export default class AddTask extends Component {
 
     render() {
         const { title } = this.state;
+        const { onCreate } = this.props;
         return (
-            <form>
+            <form onSubmit={onCreate}>
                 <input type="text" value={title} onChange={this.handleInput} />
                 <button type="button">Adicionar tarefa</button>
             </form>
@@ -30,3 +31,7 @@ export default class AddTask extends Component {
         )
     }
 }
+
+AddTask.PropTypes = {
+    onCreate: PropTypes.func,
+}.isRequired;
